@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/untitled_design_1_">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="300dp"
+        android:layout_height="179dp"
+        android:layout_marginTop="496dp"
+        android:background="@color/purple_200"
+        android:fontFamily="@font/quintessential"
+        android:padding="8dp"
+        android:text="Zawsze chciałem żyć jako wiedźma, lecz moja rodzina mnie nie wspierała. Chciała bym przejął ogromnę połacia ziemskie w Łapach i rządził jako sołtys do swojej śmierci. Jednak uciekłem i zacząłem zajmować się robieniem przetworów. Mam nadzieje że ta aplikacja pozwoli także tobie znaleźć drogę w swoim życiu."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/quintessential"
+        android:text="Wróć do menu"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="161dp"
+        tools:layout_editor_absoluteY="407dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
