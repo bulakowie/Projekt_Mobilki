@@ -27,4 +27,8 @@ interface AktywnePrzepisyDao {
     @Query("DELETE FROM aktywnePrzepis WHERE idPrzepisu = :id")
     suspend fun deleteById(id : Int)
 
+    @Query("SELECT EXISTS(SELECT 1 FROM aktywnePrzepis WHERE idPrzepisu = :id)")
+    suspend fun existsByIdPrzepisu(id: Int): Boolean
+
+
 }

@@ -3,6 +3,7 @@ package com.example.projekt_mobilki
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import androidx.room.util.query
 import com.example.projekt_mobilki.db.AktywnePrzepisyDao
@@ -27,6 +28,7 @@ class AktywneViewModel(application: Application) : AndroidViewModel(application)
     fun insert(przepis: Przepis) = viewModelScope.launch {
         repository.insert(przepis)
     }
+    suspend fun czyJestAktywny(id: Int) = repository.czyJestAktywny(id)
 
 
     fun delete(przepis: Przepis) = viewModelScope.launch {

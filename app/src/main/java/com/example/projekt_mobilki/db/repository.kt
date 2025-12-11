@@ -32,6 +32,8 @@ class PrzepisRepository(private val przepisDao: PrzepisDao, private val A_Przepi
     suspend fun deleteById_A(id: Int){
         A_PrzepisDao.deleteById(id);
     }
+    suspend fun czyJestAktywny(id: Int) = A_PrzepisDao.existsByIdPrzepisu(id)
+
 
     fun getById(id: Int): LiveData<Przepis?>
     {

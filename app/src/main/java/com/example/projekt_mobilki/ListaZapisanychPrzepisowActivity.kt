@@ -12,6 +12,8 @@ import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.cardview.widget.CardView
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
 
 class ListaAktywnychPrzepisowActivity : ComponentActivity() {
 
@@ -47,9 +49,6 @@ class ListaAktywnychPrzepisowActivity : ComponentActivity() {
             wypiszSkladniki()
         }
 
-        przepisViewModel.allPrzepisyAktywne().observe(this) { przepisy ->
-            wypiszListePrzepisow(przepisy)
-        }
         searchEditText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
@@ -87,7 +86,8 @@ class ListaAktywnychPrzepisowActivity : ComponentActivity() {
         }
     }
 
-    private fun wypiszListePrzepisow(przepisy: List<Przepis>) {
+    private fun wypiszListePrzepisow(przepisy: List<Przepis>)
+    {
         container.removeAllViews()
 
         if (przepisy.isEmpty()) {
@@ -100,11 +100,18 @@ class ListaAktywnychPrzepisowActivity : ComponentActivity() {
             return
         }
 
-        for (przepis in przepisy) {
-            addCard(przepis.nazwa, przepis.id) { idPrzepisu ->
-                otworzSzczegolyPrzepisu(idPrzepisu)
+            lifecycleScope.launch {
+                for (przepis in przepisy) {
+                    val aktywny = przepisViewModel.czyJestAktywny(przepis.id)
+
+                    if (aktywny) {
+                        addCard(przepis.nazwa, przepis.id) { idPrzepisu ->
+                            otworzSzczegolyPrzepisu(idPrzepisu)
+                        }
+                    }
+                }
             }
-        }
+
     }
 
     private fun addCard(tekst: String, id: Int, onClick: (Int) -> Unit) {

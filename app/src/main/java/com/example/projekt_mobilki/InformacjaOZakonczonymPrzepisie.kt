@@ -1,7 +1,6 @@
 package com.example.projekt_mobilki
 
 import android.content.Intent
-import android.media.Image
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
@@ -10,7 +9,7 @@ import androidx.activity.ComponentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 
-class SzczegolyPrzepisuActivity : ComponentActivity() {
+class InformacjaOZakonczonymPrzepisie: ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
@@ -58,13 +57,13 @@ class SzczegolyPrzepisuActivity : ComponentActivity() {
         if (id != -1)
         {
             przepisViewModel.getById(id).observe(this, Observer{
-                przepis -> przepis?.let()
-                {
-                        Nazwa.text = przepis.nazwa;
-                        Opis.text = przepis.opis;
-                        tresc.text = przepis.trescPrzepisu;
+                    przepis -> przepis?.let()
+            {
+                Nazwa.text = przepis.nazwa;
+                Opis.text = przepis.opis;
+                tresc.text = przepis.trescPrzepisu;
 
-                }
+            }
             })
         }
     }

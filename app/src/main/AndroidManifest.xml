@@ -38,6 +38,7 @@
             </intent-filter>
         </activity>
         <activity android:name="com.example.projekt_mobilki.ListaAktywnychPrzepisowActivity" />
+        <activity android:name="com.example.projekt_mobilki.InformacjaOZakonczonymPrzepisie" />
     </application>
 
 </manifest>
